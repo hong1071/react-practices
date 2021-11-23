@@ -5,21 +5,25 @@ module.exports = {
     entry: path.resolve('./src/index.js'),
     output: {
         path: path.resolve('public'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        assetModuleFilename: 'assets/images/[hash][ext]'
     },
     module: {
         rules: [{
             test: /\.(sa|sc|c)ss$/i,                                            // 대상(sass, scss, css), 순서 중요
             use: ['style-loader', 'css-loader', 'sass-loader']                  // 사용하는 module
+        }, {
+            test: /\.(png|gif|jpe?g|svg|ico|tiff|bmp)$/i,
+            type: 'asset/resource'
         }]
     },
+    devtool: "eval-source-map",
     devServer: {
-        //contentBase: path.resolve('public'),                                  // 감시하는 디렉토리
         host: '0.0.0.0',
         port: 9999,
-        //inline: true,
         liveReload: true,
         hot: false,
-        compress: true
+        compress: true,
+        historyApiFallback: true
     }
 }

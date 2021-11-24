@@ -1,0 +1,15 @@
+{
+    "presets": [
+        ["@babel/preset-env", {                 // "이름", {설정내용}
+            "targets": {
+                "ie": "11",
+                "edge": "89",
+                "firefox": "92",
+                "chrome": "90",
+                "opera": "76",
+                "safari": "15"
+            }
+        }], 
+        "@babel/react"                         // React Preset에 대한 설정을 해야함
+    ]
+}

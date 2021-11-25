@@ -1,4 +1,13 @@
-ex08: JSX Tutorials
+ex01: Property
+
+01. props(property)
+02. FoodList src/01: 클래스 컴포넌트
+03. FoodList src/02: Data Flow(top->down): 클래스 컴포넌트
+04. FoodList src/03: Data Flow(top->down): 함수 컴포넌트
+05. 클래스 컴포넌트 만들기
+05. FoodList src/04: validation
+
+
 
 01. 특징 1: HTML과 차이점
 02. 특징 2: Single Root node

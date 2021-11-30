@@ -5,7 +5,9 @@ ex02 component - Component Styling(Working with UI)
 03. Normal CSS (css-loader options: {modules: true})
 04. CSS Module (css-loader options: {modules: true})
 05. SASS & SCSS
-06. Font Awesome
+    ---------------------------
+    CSS in JS(), Less & Styleable
+06. Font Awesome: Working with UI 1
 07. React Modal
 08. Material UI
 

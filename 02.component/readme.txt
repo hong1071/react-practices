@@ -17,6 +17,7 @@ ex06
 AJAX: fetch, axios
 
 emailist
-gallery
 guestbook
 kanbanboard
+
+gallery

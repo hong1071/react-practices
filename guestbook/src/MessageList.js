@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useRef} from 'react';
+import React, {Fragment, useState, useRef, useEffect} from 'react';
 import PropTypes, { object } from 'prop-types';
 import Modal from 'react-modal';
 import Message from './Message';
@@ -7,10 +7,16 @@ import modalStyles from "./assets/scss/modal.scss";
 
 Modal.setAppElement('body');
 
-export default function MessageList({messages}) {
+export default function MessageList({messages, notifyMessage}) {
     const refForm = useRef(null);
     const [modalData, setModalData] = useState({isOpen:false});
+    useEffect(()=>{
+        setTimeout(() => {
+            refForm.current && refForm.current.password.focus();
 
+        }, 200);
+        
+    }, [modalData]);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
@@ -18,7 +24,7 @@ export default function MessageList({messages}) {
                 return;
             }
 
-            // const response = await fetch(`/api/${modalData.messageNo}`, {
+            // const response = await fetch(`/api/${modalData.messageNo}`, {        api 사용시
             //     method: 'delete',
             //     header: {
             //         'Content-Type': 'application/json',
@@ -35,12 +41,12 @@ export default function MessageList({messages}) {
 
             /* 비밀번호가 틀린 경우 */
             // jsonResult.data = null
-            // setModalData({}, Object.assign(modalData), {title: '....', password: ''})
+            setModalData(Object.assign({}, modalData, {label: '비밀번호가 일치하지 않습니다.', password: ''}))
 
             /* 삭제가 되지 않은 경우 */
             // jsonResult.data = 10
-
-            console.log("삭제합니다", modalData);
+            // setModalData({isOpen: false, password: ''});
+            // notifyMessage.delete(modalData.messageNo);
 
         } catch(e){
             console.error(err);
@@ -48,7 +54,7 @@ export default function MessageList({messages}) {
     }
     const notufyDeleteMessage = (no) => {
         setModalData({
-            title: '작성시 입력했던 비밀번호를 입력 하세요.',
+            label: '작성시 입력했던 비밀번호를 입력 하세요.',
             isOpen:true,
             messageNo: no,
             password: ''
@@ -77,7 +83,7 @@ export default function MessageList({messages}) {
                         ref={refForm}
                         className={styles.DeleteForm}
                         onSubmit={handleSubmit}>
-                        <label>작성시 입력했던 비밀번호를 입력 하세요.</label>
+                        <label>{modalData.label || ''}</label>
                         <input
                             type={'password'}
                             autoComplete={'off'}

@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useRef} from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import Modal from 'react-modal';
 import Message from './Message';
 import styles from './assets/scss/MessageList.scss';
@@ -9,16 +9,50 @@ Modal.setAppElement('body');
 
 export default function MessageList({messages}) {
     const refForm = useRef(null);
-    const [isOpen, setIsOpen] = useState(false);
+    const [modalData, setModalData] = useState({isOpen:false});
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try{
+            if(e.target.password.value  === ''){
+                return;
+            }
 
-        console.log("삭제합니다");
+            // const response = await fetch(`/api/${modalData.messageNo}`, {
+            //     method: 'delete',
+            //     header: {
+            //         'Content-Type': 'application/json',
+            //         'Accept': 'application/json'
+            //     },
+            //     body: JSON.stringify({password: modalData.password})
+            // });
+
+            // if(!response.ok){
+            //     throw `${response.status} ${response.statusText}`
+            // }
+
+            // const  jsonResult = response.json;
+
+            /* 비밀번호가 틀린 경우 */
+            // jsonResult.data = null
+            // setModalData({}, Object.assign(modalData), {title: '....', password: ''})
+
+            /* 삭제가 되지 않은 경우 */
+            // jsonResult.data = 10
+
+            console.log("삭제합니다", modalData);
+
+        } catch(e){
+            console.error(err);
+        }
     }
     const notufyDeleteMessage = (no) => {
-        console.log('delete:' + no);
-        setIsOpen(true);
+        setModalData({
+            title: '작성시 입력했던 비밀번호를 입력 하세요.',
+            isOpen:true,
+            messageNo: no,
+            password: ''
+        });
     }
 
     return (
@@ -31,8 +65,8 @@ export default function MessageList({messages}) {
                                                   notifyDeleteMessage={notufyDeleteMessage} />)}
             </ul>
             <Modal
-                isOpen={isOpen}
-                onRequestClose={() => setIsOpen(false)}
+                isOpen={modalData.isOpen}
+                onRequestClose={() => setModalData({isOpen: false})}            
                 shouldCloseOnOverlayClick={true}
                 className={modalStyles.Modal}
                 overlayClassName={modalStyles.Overlay}
@@ -48,14 +82,19 @@ export default function MessageList({messages}) {
                             type={'password'}
                             autoComplete={'off'}
                             name={'password'}
-                            placeholder={'비밀번호'}/>
+                            value={modalData.password}
+                            placeholder={'비밀번호'}
+                            onChange={(e) => setModalData(Object.assign({}, modalData, {password: e.target.value}))}/> 
+                                                        {/* // 객체의 여러 데이터 중 특정 데이터만 변경할 수 있는 메소드 */}
                     </form>
                 </div>
                 <div className={modalStyles['modal-dialog-buttons']}>
                     <button onClick={ () => {
+                        //console.log('삭제', password);
                         refForm.current.dispatchEvent(new Event("submit", {cancelable: true, bubbles: true}));
                     }}>확인</button>
-                    <button onClick={() => setIsOpen(false)}>취소</button>
+                    <button onClick={() => { setModalData(Object.assign({}, modalData, {isOpen: false})) }}>취소</button>
+                                            {/* // 객체의 여러 데이터 중 특정 데이터만 변경할 수 있는 메소드 */}
                 </div>
             </Modal>
         </Fragment>
@@ -63,5 +102,5 @@ export default function MessageList({messages}) {
 }
 
 MessageList.propType = {
-    message: PropTypes.arrayOf(PropTypes.shape(Message.propType))
+    message: PropTypes.arrayOf(PropTypes.shape(Message.propTypes))
 }

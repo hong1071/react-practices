@@ -3,21 +3,18 @@ React Practices - Component
 ex01: Property
     1) Component 작성법
     2) data flow: top -> down
-    3) Kanbanboard - ex01
 ex02
-    1) Component Styling
-    2) Kanbanboard - ex02
+    Component Styling
 ex03
-    1) React Event
-    2) Kanbanboard - ex03, ex04
+    React Event
 ex04
-    1) state
-    2) ajax
-    3) Kanbanboard - ex06
+    state
 ex05
-    1) Component Lifecycle
+    Component Lifecycle
 ex06
-    1) Immutability(불변성) of Component's State
+    Immutability(불변성) of Component's State
+
+AJAX: fetch, axios
 
 emailist
 gallery

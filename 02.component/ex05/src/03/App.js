@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import './assets/scss/App.scss'
 import Clock from './Clock';
 

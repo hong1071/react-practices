@@ -15,7 +15,9 @@ export default function ({ begin, step }) {
             {' '}
             <span>{ stateVal }</span>
             {' '}
-            <button>
+            <button onClick={(e) => {
+                setVal(stateVal - step);
+            }}>
                 <strong>-</strong>
             </button>
         </div>

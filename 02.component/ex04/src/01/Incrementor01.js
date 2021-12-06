@@ -10,7 +10,7 @@ export default class extends Component {
         }
     }
 
-    onClickButton(e){
+    onClickPlusButton(e){
         // this.state.value = this.state.value + this.props.step; 쓰지 않기
         this.setState({
             val: this.state.val + this.props.step
@@ -18,16 +18,22 @@ export default class extends Component {
         console.log(this.state.val + " " + this.props.step);
     }
 
+    onClickMinusButton(e){
+        this.setState({
+            val: this.state.val - this.props.step
+        })
+    }
+
     render() {
         return (
             <div>
-                <button onClick={this.onClickButton.bind(this)}>
+                <button onClick={this.onClickPlusButton.bind(this)}>
                     <strong>+</strong>
                 </button>
                 {' '}
                 <span>{this.state.val}</span>
                 {' '}
-                <button>
+                <button onClick={this.onClickMinusButton.bind(this)}>
                     <strong>-</strong>
                 </button>
             </div>

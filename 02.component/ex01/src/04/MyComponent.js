@@ -18,7 +18,7 @@ export default function MyComponent({props01, props02, props03, props04, props05
             <span>props04: { props04 ? props04.no : '--- not set ---'}</span>
             <br/>
 
-            <span>props05: { props05 ? props05.map((e, i) => <b key={i} >{e}</b>) : '--- not set ---'}</span>
+            <span>props05: { props05 ? props05.map((e, i) => <b key={i} >{e} </b>) : '--- not set ---'}</span>
             <br/>
 
             <span>props06: { props06 ? props06() : '--- not set ---'}</span>
@@ -27,7 +27,7 @@ export default function MyComponent({props01, props02, props03, props04, props05
             <span>props07: { props07 ? props07 : '--- not set ---'}</span>
             <br/>
 
-            <span>props08: { props08 ? props08.map((e, i) => e ? <b key={i} >{'true'}</b> : <b key={i} >{'false'}</b>) : '----not set----'}</span>
+            <span>props08: { props08 ? props08.map((e, i) => e ? <b key={i} >{'true'} </b> : <b key={i} >{'false'} </b>) : '----not set----'}</span>
             <br/>
 
             <span>
@@ -41,6 +41,7 @@ export default function MyComponent({props01, props02, props03, props04, props05
                         '----not set----'
                 }
             </span>
+
             <br/>
         </Fragment>
     )
@@ -66,11 +67,11 @@ MyComponent.propTypes = {
 }
 
 // default value
-MyComponent.defaultProps = {
-    props01: '기본값',
-    props02: 10,
-    props03: false,
-    props04: null,
-    props05: [],
-    props06: () => {} // dummy 함수
-}
+// MyComponent.defaultProps = {
+//     props01: '기본값',
+//     props02: 10,
+//     props03: false,
+//     props04: null,
+//     props05: [],
+//     props06: () => {} // dummy 함수
+// }

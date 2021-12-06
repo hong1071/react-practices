@@ -10,6 +10,8 @@ export default function Form() {
     const [gender, setGender] = useState('female');
     const [birthYear, setBirthYear] = useState('1984');
     const [agreeProv, setAgreeProv] = useState('no');
+    const [introduce, setIntroduce] = useState('');
+    const [password, setPassword] = useState('');
     
     const onChangeInputName = (e) => {
         // setName(e.target.value);
@@ -65,7 +67,7 @@ export default function Form() {
                 }
 
             <label htmlFor="password">패스워드</label>
-            <input id="password" name="password" type="password" value={ "" } />
+            <input id="password" name="password" type="password" value={ password } onChange={e => setPassword(e.target.value)}/>
 
             <fieldset>
                 <legend>성별</legend>
@@ -84,8 +86,8 @@ export default function Form() {
                 <option value='1990'>1990년</option>
             </select>
 
-            <label htmlFor="birthYear">자기소개</label>
-            <textarea value={""} />
+            <label htmlFor="selfIntroduce">자기소개</label>
+            <textarea value={introduce} onChange={e => {setIntroduce(e.target.value)}}/>
 
             <fieldset>
                 <legend>약관동의</legend>

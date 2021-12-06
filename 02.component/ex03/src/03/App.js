@@ -2,8 +2,8 @@ import React, {Fragment} from 'react';
 
 export default function App() {
 
-    const onChangeMessageInput = function(event) {
-        console.log(event.target.name, ':', event.target.value);
+    const onChangeMessageInput = function(e) {
+        console.log(e.target.name, ':', e.target.value);
     }
 
     const onAddFormSubmit = function(event) {

@@ -9,7 +9,7 @@ const Email = ({firstName, lastName, email}) => {
                 {email}
             </h4>
             <span>
-                {`${firstName}${lastName}`}
+                {`${firstName} ${lastName}`}
             </span>
         </li>
     );

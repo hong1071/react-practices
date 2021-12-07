@@ -8,7 +8,7 @@ module.exports = {
         const query = util.promisify(conn.query).bind(conn);
         try {
             return await query(
-                "select no, first_name as firstName, last_name as lastName, email from emaillist order by no desc",
+                "select no, first_name as firstName, last_name as lastName, email from email_list order by no desc",
                 []
             );
         } catch(e) {
@@ -22,7 +22,7 @@ module.exports = {
         const query = util.promisify(conn.query).bind(conn);
         try {
             return await query(
-                "insert into emaillist values(null, ?, ?, ?)",
+                "insert into email_list values(null, ?, ?, ?)",
                 Object.values(emaillist)
             );
         } catch(e) {

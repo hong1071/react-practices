@@ -1,22 +1,20 @@
 @charset "utf-8";
 
-nav.Navigation {
-  text-align: center;
-  line-height: 200px;
-
-  span  {
-    padding: 0 5px;
-    &::before {
-      content: '|'
-    }
-  }
+nav.Main {
+  float: left;
+  width: 120px;
 
   a {
+    display: block;
     color: #4F4F4F;
+    background-color: #E9E9E9;
+    width: 98px;
     font-weight: bold;
-
+    padding: 5px 10px;
     font-size: 1.1em;
     text-decoration: none;
+    border: 1px solid #DADADA;
+    margin-top: -1px;
 
     &:hover {
       color: #4F4F4F;
@@ -35,8 +33,7 @@ nav.Navigation {
   }
 
   :global(a.active) {
-    color: green;
-    text-decoration: underline;
+    background-color: #e0e0e0;
   }
 
 }

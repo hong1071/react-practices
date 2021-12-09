@@ -23,6 +23,7 @@ export default function Guestbook() {
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify(message)
+
                 });
     
                 if(!response.ok) {
